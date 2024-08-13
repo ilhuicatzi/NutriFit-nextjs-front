@@ -22,17 +22,22 @@ function CollapseButton() {
       <SheetContent side="left">
         <SheetHeader>
           <SheetTitle>
-            <SheetClose asChild>
-              <Link href="/" className="grid place-items-center">
-              <Image
-              src="/img/logo.png"
-              alt="Logo"
-              width="40"
-              height="40"
-              className="cursor-pointer w-9 h-9"
-            />
-              </Link>
-            </SheetClose>
+            <figure className="grid place-items-center">
+              <SheetClose asChild>
+                <Link
+                  href="/"
+                  className="object-cover p-1.5 rounded-full hover:bg-muted dark:bg-zinc-300 dark:hover:bg-zinc-500 "
+                >
+                  <Image
+                    src="/img/logo.png"
+                    alt="Logo"
+                    width="40"
+                    height="40"
+                    className="cursor-pointer w-9 h-9"
+                  />
+                </Link>
+              </SheetClose>
+            </figure>
           </SheetTitle>
         </SheetHeader>
 
