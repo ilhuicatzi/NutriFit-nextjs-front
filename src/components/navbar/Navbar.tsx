@@ -14,7 +14,7 @@ function Navbar() {
           <ButtonDarkMode />
         </div>
         <div className="hidden md:flex justify-between items-center ">
-          <Link href="/" className="object-cover p-2 rounded-full hover:bg-muted">
+          <Link href="/" className="object-cover p-1.5 rounded-full hover:bg-muted dark:bg-zinc-300 dark:hover:bg-zinc-500 ">
             <Image
               src="/img/logo.png"
               alt="Logo"
