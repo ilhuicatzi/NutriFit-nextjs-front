@@ -18,7 +18,7 @@ export function LoginComponent() {
           
           <div className="mt-4 text-center text-xs lg:text-sm flex gap-2 justify-center">
             <span>¿No tienes una cuenta?</span>{" "}
-            <Link href="#" className="underline">
+            <Link href="/auth/register" className="underline">
                 Regístrate
             </Link>
           </div>

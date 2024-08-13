@@ -18,7 +18,7 @@ export function RegisterComponent() {
           
           <div className="mt-4 text-center text-xs lg:text-sm flex gap-2 justify-center">
             <span>¿Ya tienes una cuenta?</span>
-            <Link href="/login" className="underline">
+            <Link href="/auth/login" className="underline">
                 Inicia Sesión
             </Link>
           </div>

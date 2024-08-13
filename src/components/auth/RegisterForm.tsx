@@ -16,6 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import axios from "axios";
 
 function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,10 +30,12 @@ function RegisterForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof registerFormSchema>) {
+  async function onSubmit(values: z.infer<typeof registerFormSchema>) {
     console.log(values);
     try {
       // Send data to the server
+      const res = await axios.post("/api/auth/register", values);
+      console.log(res);
     } catch (error) {
       console.error(error);
     }

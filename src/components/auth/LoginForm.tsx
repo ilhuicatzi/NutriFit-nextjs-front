@@ -16,8 +16,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function LoginForm() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -26,10 +29,23 @@ function LoginForm() {
       password: "",
     },
   });
-  function onSubmit(values: z.infer<typeof loginFormSchema>) {
+  
+  async function onSubmit(values: z.infer<typeof loginFormSchema>) {
     console.log(values);
     try {
       // Send data to the server
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: values.email,
+        password: values.password
+      });
+      console.log(res);
+      if (!res?.ok){
+        console.error(res?.error);
+      } else {
+        router.push("/project");
+      }
+
     } catch (error) {
       console.error(error);
     }
