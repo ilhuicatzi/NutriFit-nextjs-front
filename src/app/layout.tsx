@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
+import SesionProvider from "@/contexts/SessionProvider";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
@@ -11,9 +12,9 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Salud IA",
+  title: "Project",
   description:
-    "Aplicación web para generar diagnósticos médicos para conocer el estado de salud de una persona.",
+    "Template from Vercel with Next.js, TypeScript, Tailwind CSS, ESLint, Prettier, and NextAuth.js",
 };
 
 export default function RootLayout({
@@ -30,14 +31,16 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          > 
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SesionProvider>
             <Navbar />
             {children}
-          </ThemeProvider>
+          </SesionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

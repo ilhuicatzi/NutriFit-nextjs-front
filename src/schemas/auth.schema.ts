@@ -1,25 +1,29 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const registerFormSchema = z
   .object({
-    firstName: z.string().min(2, {
-      message: "El nombre de usuario debe tener al menos 2 caracteres",
-    }).refine((value) => !/\s/.test(value), {
-      message: "El nombre de usuario no debe contener espacios"
-    }).refine((value) => !/\d/.test(value), {
-        message: "El nombre de usuario no debe contener números"
-    }).refine((value) => !/[^a-zA-ZñÑ]/.test(value), {
-        message: "El nombre de usuario no debe contener caracteres especiales"
-    }),
-    lastName: z.string().min(2, {
-      message: "El nombre de usuario debe tener al menos 2 caracteres",
-    }).refine((value) => !/\s/.test(value), {
-      message: "El nombre de usuario no debe contener espacios",
-    }).refine((value) => !/\d/.test(value), {
-        message: "El nombre de usuario no debe contener números"
-    }).refine((value) => !/[^a-zA-ZñÑ]/.test(value), {
-        message: "El nombre de usuario no debe contener caracteres especiales"
-    }),
+    firstName: z
+      .string()
+      .min(2, {
+        message: "El nombre de usuario debe tener al menos 2 caracteres",
+      })
+      .refine((value) => !/\d/.test(value), {
+        message: "El nombre de usuario no debe contener números",
+      })
+      .refine((value) => !/[^a-zA-ZñÑáéíóúÁÉÍÓÚ]/.test(value), {
+        message: "El nombre de usuario no debe contener caracteres especiales",
+      }),
+    lastName: z
+      .string()
+      .min(2, {
+        message: "El nombre de usuario debe tener al menos 2 caracteres",
+      })
+      .refine((value) => !/\d/.test(value), {
+        message: "El nombre de usuario no debe contener números",
+      })
+      .refine((value) => !/[^a-zA-ZñÑáéíóúÁÉÍÓÚ]/.test(value), {
+        message: "El nombre de usuario no debe contener caracteres especiales",
+      }),
     email: z.string().email({
       message: "Email invalido",
     }),
@@ -63,7 +67,8 @@ export const registerFormSchema = z
     path: ["lastName"],
   });
 
-  export const loginFormSchema = z.object({
+export const loginFormSchema = z
+  .object({
     email: z.string().email({
       message: "Email invalido",
     }),
@@ -85,7 +90,8 @@ export const registerFormSchema = z
       .refine((value) => /[!@#$%^&*(),.?":{}|<>]/.test(value), {
         message: "La contraseña debe contener al menos un carácter especial",
       }),
-  }).refine((data) => data.password !== data.email, {
+  })
+  .refine((data) => data.password !== data.email, {
     message: "La contraseña no puede ser igual al email",
     path: ["password"],
   });

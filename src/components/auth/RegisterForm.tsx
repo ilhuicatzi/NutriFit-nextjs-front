@@ -17,8 +17,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import axios from "axios";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function RegisterForm() {
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false);
   const form = useForm<z.infer<typeof registerFormSchema>>({
     resolver: zodResolver(registerFormSchema),
@@ -33,13 +36,30 @@ function RegisterForm() {
   async function onSubmit(values: z.infer<typeof registerFormSchema>) {
     console.log(values);
     try {
-      // Send data to the server
-      const res = await axios.post("/api/auth/register", values);
-      console.log(res);
+        // Send data to the server
+        const res = await axios.post("/api/auth/register", values);
+        console.log(res);
+        
+        if (res.status === 201 && res.data?.email) {
+            const result = await signIn('credentials', {
+                email: res.data.email,
+                password: values.password,
+                redirect: false
+            });
+            if (!result?.ok) {
+                console.log(result);
+                alert("Error al iniciar sesión. Por favor, verifica tus credenciales.");
+                return;
+            } else {
+                router.push("/project");
+            }
+        }
+
     } catch (error) {
-      console.error(error);
+        console.error(error);
+        alert("Error al registrar el usuario. Por favor, intenta nuevamente.");
     }
-  }
+}
   return (
     <div className="grid gap-4">
       <Form {...form}>
