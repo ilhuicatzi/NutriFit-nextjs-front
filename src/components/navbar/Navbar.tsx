@@ -12,7 +12,7 @@ function Navbar() {
   const user = data?.user;
   
   return (
-    <nav className="px-3 md:px-10 py-2 ">
+    <nav className="px-3 md:px-10 py-2 bg-transparent z-20">
       <section>
         <div className="flex justify-between md:hidden">
           <CollapseButton status={status} user={user}  />

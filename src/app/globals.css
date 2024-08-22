@@ -29,6 +29,34 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --background-image: linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 11%,
+        rgba(156, 156, 156, 0.06) 11%,
+        rgba(156, 156, 156, 0.06) 81%,
+        transparent 81%,
+        transparent 100%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 18%,
+        rgba(156, 156, 156, 0.06) 18%,
+        rgba(156, 156, 156, 0.06) 64%,
+        transparent 64%,
+        transparent 100%
+      ),
+      linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 13%,
+        rgba(156, 156, 156, 0.06) 13%,
+        rgba(156, 156, 156, 0.06) 22%,
+        transparent 22%,
+        transparent 100%
+      ),
+      linear-gradient(90deg, rgb(250, 250, 250), rgb(250, 250, 250));
   }
 
   .dark {
@@ -56,6 +84,34 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --background-image: linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 11%,
+        rgba(156, 156, 156, 0.06) 11%,
+        rgba(156, 156, 156, 0.06) 81%,
+        transparent 81%,
+        transparent 100%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 18%,
+        rgba(156, 156, 156, 0.06) 18%,
+        rgba(156, 156, 156, 0.06) 64%,
+        transparent 64%,
+        transparent 100%
+      ),
+      linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 13%,
+        rgba(156, 156, 156, 0.06) 13%,
+        rgba(156, 156, 156, 0.06) 22%,
+        transparent 22%,
+        transparent 100%
+      ),
+      linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 0, 0));
   }
 }
 
@@ -66,4 +122,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.magic-bg {
+  background: var(--background-image);
 }
